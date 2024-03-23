@@ -17,20 +17,17 @@ To start, I have already turned the data encoded in the AD and RD spaces of the 
 **Question** How did I convert RD and AD values into an allele frequency? 
 **Answer here**
 
-We need to use some Linux code to get some files off of `spydur` and to the Rstudio server where we are working today.  We will use a Linux function called `scp` (short for "secure copy") to do that. It will copy the named files to your current working directory on the Rstudio server (indicated by the `./` at the end of the command). We can run Linux commands through Rstudio by putting `{bash}` at the top of the code. 
+We need to use some Linux code to get some large files off of `spydur` and to the Rstudio server where we are working today.  We will use a Linux function called `scp` (short for "secure copy") to do that. It will copy the named files to your current working directory on the Rstudio server (indicated by the `./` at the end of the command). We can run Linux commands through Rstudio by putting `{bash}` at the top of the code. 
 
-Replace `perickso` after the `scp` with your netid below in each line of code and run this bash code chunk.  You should see these files appear in your working folder to the right. The first line sets up some information that will allow us to use one of the R packages that we'll be using today. 
+Replace `yournetid` after the `scp` with your actual netid below in each line of code and run this bash code chunk.  You should see these files appear in your working folder to the right. The first line sets up some information that will allow us to use one of the R packages that we'll be using today. 
 
-Note these files will take a ~30 seconds to copy because some of them are large
 
 ```{bash}
 export LD_LIBRARY_PATH=/usr/lib64:/usr/local/sw/anaconda3/lib:/usr/pgsql-13/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/sw/anaconda3/lib
-scp perickso@spydur:~/shared_perickso/ZP_chr1.vcf ./
-scp perickso@spydur:~/shared_perickso/ZP_chr3.vcf ./
-scp perickso@spydur:~/shared_perickso/downsampled_allele_freqs_S24.Rdata ./
-scp perickso@spydur:~/shared_perickso/samples.txt ./
-scp perickso@spydur:~/shared_perickso/vcf_sample_names.txt ./
+scp yournetid@spydur:~/shared_perickso/ZP_chr1.vcf ./
+scp yournetid@spydur:~/shared_perickso/ZP_chr3.vcf ./
+
 ```
 
 *Part 1: Principal Components Analysis (PCA)*
@@ -65,6 +62,7 @@ When we do our analysis we want to remove SNPs  that are closely linked in haplo
 First let's do a principal components analysis using our  data for the entire genome. Note that while most of the PCAs we have looked at in class have used *genotypes of individuals* at many SNPs to calculate PCA, we can also use *allele frequencies of populations* for a similar calculation. 
 
 Now we'll do the actual principal components calculation. R has a built-in function called `prcomp` to do this. You can run the whole chunk of code below to execute the PCA; we won't worry about the specific functions used here but if you have questions I'm happy to explain how this code works. 
+
 ```{r}
 #we only want to use SNPs with no missing data. This function will remove any rows of the matrix with missing data
 pca.matrix<-as.matrix(y[,4:47]) 
