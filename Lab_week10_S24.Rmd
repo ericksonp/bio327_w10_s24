@@ -108,6 +108,8 @@ info<-fread("samples.txt")
 
 **Question** To combine these two data tables together, we need a column that has the same name and same information in both tables to match up the data. What is the name of the column that is shared in common with `pca.data` and `info` ?
 
+**Answer here**
+
 
 Now set up the command below to merge the sample and pca data by replacing `"name.of.shared.column"` with the column you identified above. Keep the quotes around the column name. Note that this command takes the f two data tables and the column they have in common, then uses a shared column to match up the data. 
 
@@ -171,7 +173,7 @@ ggplot(pca.data)+geom_point(aes(x=  ,
 
 **Answer here**
 
-We were focusing on the whole genome, but previous research on Zaprionus has suggested that there are some interesting trends of population differentiation with individual chromosomes. Let's repeat our PCA, but now we will calculate the PCA for each chromosome separately and compare the results acros chromosomes. This will allow us to see if certain chromosomes have stronger genetic differences than others. Like a few weeks ago, we'll use a "for loop" that processes the chromosomes one at a time. The mechanics of how this code works are too complicated to go through today, so you can just run this code and proceed to the steps below. 
+We were focusing on the whole genome, but previous research on Zaprionus has suggested that there are some interesting trends of population differentiation with individual chromosomes. Let's repeat our PCA, but now we will calculate the PCA for each chromosome separately and compare the results across chromosomes. This will allow us to see if certain chromosomes have stronger genetic differences than others. Like a few weeks ago, we'll use a "for loop" that processes the chromosomes one at a time. The mechanics of how this code works are too complicated to go through today, so you can just run this code and proceed to the steps below. 
 
 ```{r}
 pca.chrom<-foreach(chrom=c(1:5))%do%{
@@ -266,7 +268,7 @@ Before moving on, check with Dr. E about your answers. Then, develop the code fo
 
 ```
 
-At the end of the lab you will be asked to write a brief figure legend and results statement for this analysis. I recommend saving tha ttil the end of the lab so you have enough time to get help with any additional coding questions before the end of the lab period.
+At the end of the lab you will be asked to write a brief figure legend and results statement for this analysis. I recommend saving that until the end of the lab so you have enough time to get help with any additional coding questions before the end of the lab period.
 
 *Part 3: Genome-wide FST between all pairs of samples*
 
